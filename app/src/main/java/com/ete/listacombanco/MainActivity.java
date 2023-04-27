@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
-    String nome;
+    String nome,email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
