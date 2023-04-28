@@ -76,7 +76,7 @@ public class Conexao extends SQLiteOpenHelper {
             cursor.moveToFirst();
 
         }catch (SQLException ex){
-            Log.e("ERRO",ex.getMessage());
+            Log.e("ERRO:",ex.getMessage());
         }
     }
 
