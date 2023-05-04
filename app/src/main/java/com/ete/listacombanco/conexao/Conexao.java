@@ -10,11 +10,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.ete.listacombanco.model.Pessoa;
+import com.ete.listacombanco.model.Usuario;
 
 
 public class Conexao extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "banco.db";
+    private static final String DATABASE_NAME = "meubanco.db";
     private static final int DATABASE_VERSION = 1;
 
     public Conexao (Context ctx) {
@@ -45,6 +46,8 @@ public class Conexao extends SQLiteOpenHelper {
                     "id INTEGER PRIMARY KEY autoincrement, " +
                     "usuario VARCHAR(100), " +
                     "senha varchar(32));");
+
+
 
 
         }catch (SQLException ex){
@@ -86,6 +89,22 @@ public class Conexao extends SQLiteOpenHelper {
                 rawQuery("delete from pessoa where id = "+id,null);
         cursor.moveToFirst();
         return cursor;
+    }
+
+    public void inserirUsuario(Usuario usuario){
+        try{
+            ContentValues valores = new ContentValues();
+
+            valores.put("usuario",usuario.getUsuario());
+            valores.put("senha",usuario.getSenha());
+
+
+            getWritableDatabase().insert("usuario",
+                    null,valores);
+
+        }catch (SQLException ex){
+            Log.e("ERRO",ex.getMessage());
+        }
     }
 
     public void inserirPessoa(Pessoa pessoa){
