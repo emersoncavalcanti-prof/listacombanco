@@ -1,4 +1,4 @@
-package com.ete.listacombanco;
+package com.ete.listacombanco.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.ete.listacombanco.R;
 import com.ete.listacombanco.conexao.Conexao;
 import com.ete.listacombanco.model.Usuario;
 
