@@ -8,7 +8,6 @@ public class Pessoa {
     private String telefone;
     private String email;
     private String senha;
-    private String tipo;
 
     public String getId() {
         return id;
@@ -58,11 +57,5 @@ public class Pessoa {
         this.senha = senha;
     }
 
-    public String getTipo() {
-        return tipo;
-    }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
 }

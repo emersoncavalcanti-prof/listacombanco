@@ -12,6 +12,8 @@ import android.util.Log;
 import com.ete.listacombanco.model.Pessoa;
 import com.ete.listacombanco.model.Usuario;
 
+import java.util.ArrayList;
+
 
 public class Conexao extends SQLiteOpenHelper {
 
@@ -38,7 +40,6 @@ public class Conexao extends SQLiteOpenHelper {
                     "nome VARCHAR(80), " +
                     "cpf VARCHAR(11), " +
                     "telefone VARCHAR(15)," +
-                    "tipo char(1),"+
                     "senha varchar(32),"+
                     "email VARCHAR(100));");
 
@@ -56,75 +57,7 @@ public class Conexao extends SQLiteOpenHelper {
 
     }
 
-    public Cursor retornarPessoas(){
 
-        Cursor cursor = getReadableDatabase().
-                rawQuery("select * from pessoa",null);
-
-        return cursor;
-    }
-
-    public void atualizarPessoa(Pessoa pessoa){
-        try{
-
-            Cursor cursor = getWritableDatabase().
-                    rawQuery("update pessoa set" +
-                            " nome = '" +pessoa.getNome()+
-                            "' ,cpf = '" +pessoa.getCpf()+
-                            "' ,email = '" +pessoa.getEmail()+
-                            "' ,senha = '" +pessoa.getSenha()+
-                            "' ,telefone = '" +pessoa.getTelefone()+
-                            "' ,tipo = '" +pessoa.getTipo()+
-                            "' where id = "+pessoa.getId(),null);
-            cursor.moveToFirst();
-
-        }catch (SQLException ex){
-            Log.e("ERRO:",ex.getMessage());
-        }
-    }
-
-    public Cursor excluirPessoa(String id){
-
-        Cursor cursor = getWritableDatabase().
-                rawQuery("delete from pessoa where id = "+id,null);
-        cursor.moveToFirst();
-        return cursor;
-    }
-
-    public void inserirUsuario(Usuario usuario){
-        try{
-            ContentValues valores = new ContentValues();
-
-            valores.put("usuario",usuario.getUsuario());
-            valores.put("senha",usuario.getSenha());
-
-
-            getWritableDatabase().insert("usuario",
-                    null,valores);
-
-        }catch (SQLException ex){
-            Log.e("ERRO",ex.getMessage());
-        }
-    }
-
-    public void inserirPessoa(Pessoa pessoa){
-        try{
-            ContentValues valores = new ContentValues();
-
-            valores.put("nome",pessoa.getNome());
-            valores.put("cpf",pessoa.getCpf());
-            valores.put("telefone",pessoa.getTelefone());
-            valores.put("email",pessoa.getEmail());
-            valores.put("senha",pessoa.getSenha());
-            valores.put("tipo",pessoa.getTipo());
-
-            getWritableDatabase().insert("pessoa",
-                    null,valores);
-
-        }catch (SQLException ex){
-            Log.e("ERRO",ex.getMessage());
-        }
-    }
 
 
 }

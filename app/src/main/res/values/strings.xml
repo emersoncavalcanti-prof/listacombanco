@@ -1,3 +1,3 @@
 <resources>
-    <string name="app_name">ListaComBanco</string>
+    <string name="app_name">Persistência com SQLite</string>
 </resources>
